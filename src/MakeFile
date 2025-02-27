@@ -1,0 +1,25 @@
+CFLAGS=-g -O3
+CC=gcc  
+
+
+all: dotokenizer
+
+
+history.o: history.c
+	$(CC) $(CFLAGS) -c history.c
+
+
+uimain.o: uimain.c
+	$(CC) $(CFLAGS) -c uimain.c
+
+
+tokenizer.o: tokenizer.c
+	$(CC) $(CFLAGS) -c tokenizer.c
+
+
+dotokenizer: uimain.o tokenizer.o history.o
+	$(CC) $(CFLAGS) -o dotokenizer uimain.o tokenizer.o history.o
+
+
+clean:
+	rm -f *.o dotokenizer
